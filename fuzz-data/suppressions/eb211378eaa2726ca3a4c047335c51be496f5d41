@@ -1,0 +1,20 @@
+fatal error: runtime: out of memory
+runtime.systemstack_switch
+runtime.mallocgc
+runtime.makeslice
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/shared.(*SlickReaderStream).Readnzc
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).decodeString
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).stepHelper_acceptValue
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).step_acceptValue
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).(gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.step_acceptValue)-fm
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).Step
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/shared.TokenPump.Run
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Unmarshaller).Unmarshal
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.UnmarshalAtlased
+github.com/ipfs/go-ipld-cbor.DecodeInto
+github.com/ipfs/go-ipld-cbor.Decode
+github.com/ipfs/go-ipld-cbor.Fuzz
+go-fuzz-dep.Main
+main.main
+runtime.main
+runtime.goexit

@@ -1,0 +1,32 @@
+panic: runtime error: makeslice: len out of range
+
+goroutine 1 [running]:
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/shared.(*SlickReaderStream).Readn(0xc42005e0c0, 0x3030303030303030, 0x3030303030303030, 0x0, 0x0, 0x1, 0x0)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/shared/reader.go:107 +0xdc
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).decodeBytes(0xc420078140, 0xc42000a25b, 0x5eab60, 0x5c5080, 0xc420049bf0, 0x57bee6, 0xc42000a280)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborDecoderTerminals.go:171 +0xec
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).stepHelper_acceptValue(0xc420078140, 0x5b, 0xc420096150, 0x0, 0x0, 0x6efe00)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborDecoder.go:226 +0xadb
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).step_acceptValue(0xc420078140, 0xc420096150, 0xc42000e500, 0x0, 0x6efe00)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborDecoder.go:70 +0xe4
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).(gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.step_acceptValue)-fm(0xc420096150, 0x5e78e0, 0x5c5001, 0xc420096150)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborDecoder.go:25 +0x34
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).Step(0xc420078140, 0xc420096150, 0x5cecc0, 0x5d7401, 0xc42000e500)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborDecoder.go:38 +0x50
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/shared.TokenPump.Run(0x6111a0, 0xc420078140, 0x611220, 0xc42005e060, 0x0, 0xc4200aa000)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/shared/pump.go:31 +0xa3
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Unmarshaller).Unmarshal(0xc4200683c0, 0x5b15a0, 0xc42000e4e0, 0xc420068390, 0xc42000e4c0)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborHelpers.go:90 +0x9d
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.UnmarshalAtlased(0x7f0b70642000, 0x9, 0x200000, 0x5b15a0, 0xc42000e4e0, 0xc420068360, 0xc420068390, 0xc42000e4c0, 0xc420049e01, 0xc42000e4e0)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborHelpers.go:78 +0xe3
+github.com/ipfs/go-ipld-cbor.DecodeInto(0x7f0b70642000, 0x9, 0x200000, 0x5b15a0, 0xc42000e4e0, 0xc420049ef0, 0x472ec7)
+	/tmp/go-fuzz-build463849721/gopath/src/github.com/ipfs/go-ipld-cbor/node.go:158 +0x8e
+github.com/ipfs/go-ipld-cbor.Decode(0x7f0b70642000, 0x9, 0x200000, 0x12, 0xffffffffffffffff, 0xc420049ef0, 0x46aec6, 0x5aa6aec1)
+	/tmp/go-fuzz-build463849721/gopath/src/github.com/ipfs/go-ipld-cbor/node.go:146 +0x86
+github.com/ipfs/go-ipld-cbor.Fuzz(0x7f0b70642000, 0x9, 0x200000, 0xc42000c060)
+	/tmp/go-fuzz-build463849721/gopath/src/github.com/ipfs/go-ipld-cbor/node_fuzz.go:12 +0x6d
+go-fuzz-dep.Main(0x5fb958)
+	/tmp/go-fuzz-build463849721/goroot/src/go-fuzz-dep/main.go:49 +0xad
+main.main()
+	/tmp/go-fuzz-build463849721/gopath/src/github.com/ipfs/go-ipld-cbor/go.fuzz.main/main.go:10 +0x2d
+exit status 2

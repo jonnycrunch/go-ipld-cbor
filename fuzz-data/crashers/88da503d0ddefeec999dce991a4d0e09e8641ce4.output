@@ -1,0 +1,81 @@
+program hanged (timeout 10 seconds)
+
+SIGABRT: abort
+PC=0x452a8c m=0 sigcode=0
+
+goroutine 0 [idle]:
+runtime.memclrNoHeapPointers(0xc436d04000, 0x82d84000)
+	/tmp/go-fuzz-build463849721/goroot/src/runtime/memclr_amd64.s:101 +0x17c
+runtime.(*mheap).alloc(0x6f4b60, 0x416c2, 0x7fddf5010101, 0x70d2c0)
+	/tmp/go-fuzz-build463849721/goroot/src/runtime/mheap.go:758 +0xdc
+runtime.largeAlloc(0x82d82a58, 0x440101, 0x6ef6b0)
+	/tmp/go-fuzz-build463849721/goroot/src/runtime/malloc.go:826 +0x94
+runtime.mallocgc.func1()
+	/tmp/go-fuzz-build463849721/goroot/src/runtime/malloc.go:721 +0x46
+runtime.systemstack(0x0)
+	/tmp/go-fuzz-build463849721/goroot/src/runtime/asm_amd64.s:409 +0x79
+runtime.mstart()
+	/tmp/go-fuzz-build463849721/goroot/src/runtime/proc.go:1170
+
+goroutine 1 [running]:
+runtime.systemstack_switch()
+	/tmp/go-fuzz-build463849721/goroot/src/runtime/asm_amd64.s:363 fp=0xc4200879e8 sp=0xc4200879e0 pc=0x44f880
+runtime.mallocgc(0x82d82a58, 0x5b8f40, 0x1, 0x20)
+	/tmp/go-fuzz-build463849721/goroot/src/runtime/malloc.go:720 +0x8a2 fp=0xc420087a88 sp=0xc4200879e8 pc=0x40f932
+runtime.makeslice(0x5b8f40, 0x82d82a58, 0x82d82a58, 0x5940b0, 0xc4201ca230, 0xc4203dcf7a)
+	/tmp/go-fuzz-build463849721/goroot/src/runtime/slice.go:61 +0x77 fp=0xc420087ab8 sp=0xc420087a88 pc=0x43c057
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/shared.(*SlickReaderStream).Readnzc(0xc4203db3e0, 0x82d82a58, 0x82d82a58, 0x0, 0x0, 0x1, 0x1)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/shared/reader.go:97 +0x169 fp=0xc420087b10 sp=0xc420087ab8 pc=0x57b1a9
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).decodeString(0xc4201ca230, 0x7fddf578b77a, 0xc420087c80, 0xf7, 0xc420087c28, 0x40f59d)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborDecoderTerminals.go:180 +0xe6 fp=0xc420087b68 sp=0xc420087b10 pc=0x594b66
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).stepHelper_acceptValue(0xc4201ca230, 0xc4203dcf7a, 0xc4201be930, 0x0, 0xc4201be930, 0x0)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborDecoder.go:230 +0xa39 fp=0xc420087c68 sp=0xc420087b68 pc=0x5930b9
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).step_acceptMapKey(0xc4201ca230, 0xc4201be930, 0xc420087d08, 0x5884d4, 0xc4201cdad8)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborDecoder.go:162 +0x1b0 fp=0xc420087cb0 sp=0xc420087c68 pc=0x592480
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).(gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.step_acceptMapKey)-fm(0xc4201be930, 0x5e7800, 0x0, 0x0)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborDecoder.go:173 +0x34 fp=0xc420087ce8 sp=0xc420087cb0 pc=0x599154
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Decoder).Step(0xc4201ca230, 0xc4201be930, 0x5cec00, 0x0, 0x0)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborDecoder.go:38 +0x50 fp=0xc420087d18 sp=0xc420087ce8 pc=0x5918c0
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/shared.TokenPump.Run(0x6111a0, 0xc4201ca230, 0x611220, 0xc4203db380, 0x0, 0xc4201cda80)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/shared/pump.go:31 +0xa3 fp=0xc420087d70 sp=0xc420087d18 pc=0x57ae23
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.(*Unmarshaller).Unmarshal(0xc4201aa720, 0x5b15a0, 0xc4203dcef0, 0xc42006a390, 0xc42000e4c0)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborHelpers.go:90 +0x9d fp=0xc420087db0 sp=0xc420087d70 pc=0x59810d
+gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor.UnmarshalAtlased(0x7fddf57fb000, 0x87, 0x200000, 0x5b15a0, 0xc4203dcef0, 0xc42006a360, 0xc42006a390, 0xc42000e4c0, 0xc420087e01, 0xc4203dcef0)
+	/tmp/go-fuzz-build463849721/gopath/src/gx/ipfs/QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk/refmt/cbor/cborHelpers.go:78 +0xe3 fp=0xc420087df0 sp=0xc420087db0 pc=0x598033
+github.com/ipfs/go-ipld-cbor.DecodeInto(0x7fddf57fb000, 0x87, 0x200000, 0x5b15a0, 0xc4203dcef0, 0xc420087ef0, 0x472ec7)
+	/tmp/go-fuzz-build463849721/gopath/src/github.com/ipfs/go-ipld-cbor/node.go:158 +0x8e fp=0xc420087e50 sp=0xc420087df0 pc=0x599cee
+github.com/ipfs/go-ipld-cbor.Decode(0x7fddf57fb000, 0x87, 0x200000, 0x12, 0xffffffffffffffff, 0xc420087ef0, 0x46aec6, 0x5aa6aefc)
+	/tmp/go-fuzz-build463849721/gopath/src/github.com/ipfs/go-ipld-cbor/node.go:146 +0x86 fp=0xc420087ea0 sp=0xc420087e50 pc=0x599b76
+github.com/ipfs/go-ipld-cbor.Fuzz(0x7fddf57fb000, 0x87, 0x200000, 0x3)
+	/tmp/go-fuzz-build463849721/gopath/src/github.com/ipfs/go-ipld-cbor/node_fuzz.go:12 +0x6d fp=0xc420087f00 sp=0xc420087ea0 pc=0x59df4d
+go-fuzz-dep.Main(0x5fb958)
+	/tmp/go-fuzz-build463849721/goroot/src/go-fuzz-dep/main.go:49 +0xad fp=0xc420087f70 sp=0xc420087f00 pc=0x472d4d
+main.main()
+	/tmp/go-fuzz-build463849721/gopath/src/github.com/ipfs/go-ipld-cbor/go.fuzz.main/main.go:10 +0x2d fp=0xc420087f88 sp=0xc420087f70 pc=0x59eecd
+runtime.main()
+	/tmp/go-fuzz-build463849721/goroot/src/runtime/proc.go:198 +0x212 fp=0xc420087fe0 sp=0xc420087f88 pc=0x42a3c2
+runtime.goexit()
+	/tmp/go-fuzz-build463849721/goroot/src/runtime/asm_amd64.s:2361 +0x1 fp=0xc420087fe8 sp=0xc420087fe0 pc=0x452331
+
+rax    0x0
+rbx    0x3560c060
+rcx    0x82d84000
+rdx    0x7fddf5a207c0
+rdi    0xc48447bfa0
+rsi    0xffffffffffffffe0
+rbp    0x7ffd05ce0df0
+rsp    0x7ffd05ce0da8
+r8     0xc000000000
+r9     0x4cd43
+r10    0x82d84000
+r11    0x1bb334e1a01683
+r12    0x82d84000
+r13    0x0
+r14    0x7fddf5a1b000
+r15    0x1
+rip    0x452a8c
+rflags 0x10202
+cs     0x33
+fs     0x0
+gs     0x0
+exit status 2
