@@ -5,7 +5,7 @@ import (
 
 	cid "github.com/ipfs/go-cid"
 
-	encoding "github.com/ipfs/go-ipld-cbor/encoding"
+	encoding "github.com/jonnycrunch/go-ipld-cbor/encoding"
 
 	"github.com/polydawn/refmt/obj/atlas"
 )
