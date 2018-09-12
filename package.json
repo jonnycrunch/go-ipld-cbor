@@ -9,15 +9,15 @@
   "gxDependencies": [
     {
       "author": "whyrusleeping",
-      "hash": "QmUSyMZ8Vt4vTZr5HdDEgEfpwAXfQRuDdfCFTt7XBzhxpQ",
+      "hash": "QmdDXJs4axxefSPgK6Y1QhpJWKuDPnGJiqgq4uncb4rFHL",
       "name": "go-ipld-format",
-      "version": "0.5.6"
+      "version": "0.6.0"
     },
     {
       "author": "whyrusleeping",
-      "hash": "Qmdu2AYUV7yMoVBQPxXNfe7FJcdx16kYtsx6jAPKWQYF1y",
+      "hash": "QmPSQnBKM9g7BaUcZCvswUJVscQ1ipjmwxN5PXCjkp9EQ7",
       "name": "go-cid",
-      "version": "0.7.24"
+      "version": "0.9.0"
     },
     {
       "author": "whyrusleeping",
@@ -33,15 +33,21 @@
     },
     {
       "author": "stebalien",
-      "hash": "QmZXvzTJTiN6p469osBUtEwm4WwhXXoWcHC8aTS1cAJkjy",
+      "hash": "QmRcHuYzAyswytBuMF78rj3LTChYszomRFXNg4685ZN1WM",
       "name": "go-block-format",
-      "version": "0.1.9"
+      "version": "0.2.0"
     },
     {
       "author": "multiformats",
       "hash": "QmPnFwZ2JXKnXgMw8CdBPxn7FWh6LLdjUjxV1fKHuJnkr8",
       "name": "go-multihash",
-      "version": "1.0.8"
+      "version": "1.0.7"
+    },
+    {
+      "author": "why",
+      "hash": "QmcrriCMhjb5ZWzmPNxmP53px47tSPcXBNaMtLdgcKFJYk",
+      "name": "refmt",
+      "version": "1.1.0"
     }
   ],
   "gxVersion": "0.10.0",
@@ -49,6 +55,6 @@
   "license": "",
   "name": "go-ipld-cbor",
   "releaseCmd": "git commit -a -m \"gx publish $VERSION\"",
-  "version": "1.2.15"
+  "version": "1.3.0"
 }
 
