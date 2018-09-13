@@ -56,13 +56,13 @@ func rebuildAtlas() {
 	cloner = encoding.NewPooledCloner(cborAtlas)
 }
 
-// RegisterCborType allows to register a custom cbor type
-func RegisterCborType(i interface{}) {
+// RegisterCborType allows to register a custom cbor type and defines a sort mode for deterministic output
+func RegisterCborType(i interface{}, mode string) {
 	var entry *atlas.AtlasEntry
 	if ae, ok := i.(*atlas.AtlasEntry); ok {
 		entry = ae
 	} else {
-		entry = atlas.BuildEntry(i).StructMap().AutogenerateWithSortingScheme(atlas.KeySortMode_RFC7049).Complete()
+		entry = atlas.BuildEntry(i).StructMap().AutogenerateWithSortingScheme(atlas.KeySortMode(mode)).Complete()
 	}
 	atlasEntries = append(atlasEntries, entry)
 	rebuildAtlas()
