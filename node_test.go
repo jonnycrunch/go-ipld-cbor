@@ -18,6 +18,10 @@ import (
 	mh "github.com/multiformats/go-multihash"
 )
 
+func init() {
+	RegisterCborType(BigIntAtlasEntry)
+}
+
 func assertCid(c cid.Cid, exp string) error {
 	if c.String() != exp {
 		return fmt.Errorf("expected cid of %s, got %s", exp, c)
@@ -84,7 +88,6 @@ func TestBasicMarshal(t *testing.T) {
 		"name": "foo",
 		"bar":  c,
 	}
-	fmt.Printf("cid: %s\n", c.String())
 	nd, err := WrapObject(obj, mh.SHA2_256, -1)
 	if err != nil {
 		t.Fatal(err)
@@ -98,9 +101,6 @@ func TestBasicMarshal(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-
-	fmt.Printf("before %v\n", nd.RawData())
-	fmt.Printf("after %v\n", back.RawData())
 
 	if err := assertCid(back.Cid(), "zdpuApUZEHofKXuTs2Yv2CLBeiASQrc9FojFLSZWcyZq6dZhb"); err != nil {
 		t.Fatal(err)
@@ -501,6 +501,48 @@ func TestStableCID(t *testing.T) {
 
 	if !badBlock.Cid().Equals(badNode.Cid()) {
 		t.Fatal("CIDs not stable")
+	}
+}
+
+func TestCidAndBigInt(t *testing.T) {
+	type Foo struct {
+		B *big.Int
+		A cid.Cid
+	}
+	RegisterCborType(Foo{})
+
+	nd, err := WrapObject("", mh.SHA2_256, -1)
+	if err != nil {
+		t.Fatal(err)
+	}
+	c := nd.Cid()
+	_, err = WrapObject(&Foo{
+		A: c,
+		B: big.NewInt(1),
+	}, mh.SHA2_256, -1)
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestEmptyCid(t *testing.T) {
+	type Foo struct {
+		A cid.Cid
+	}
+	type Bar struct {
+		A cid.Cid `refmt:",omitempty"`
+	}
+	RegisterCborType(Foo{})
+	RegisterCborType(Bar{})
+
+	_, err := WrapObject(&Foo{}, mh.SHA2_256, -1)
+	if err == nil {
+		t.Fatal("should have failed to encode an object with an empty but non-omitted CID")
+	}
+
+	_, err = WrapObject(&Bar{}, mh.SHA2_256, -1)
+	if err != nil {
+		t.Fatal(err)
 	}
 }
 
